@@ -1,6 +1,7 @@
 ![BrightCoders Logo](img/logo-bc.png)
 
-# Reloj Checador App
+![rubycritic-badge](badges/app/rubycritic_badge_score.svg)
+![coverage-badge](badges/coverage-badge.png)
 
 ![cover](img/cover.jpg)
 

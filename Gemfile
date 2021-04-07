@@ -62,3 +62,9 @@ gem "rubycritic", "~> 4.6"
 gem 'rubycritic-small-badge', '~> 0.2.1'
 
 gem "sandi_meter", "~> 1.2"
+
+gem "rspec-rails", "~> 5.0"
+
+gem "simplecov", "~> 0.21.2"
+
+gem "simplecov-badge", "~> 2.0"
