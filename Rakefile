@@ -2,6 +2,9 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require_relative "config/application"
+require 'rubycritic_small_badge'
+require 'rubycritic/rake_task'
+require 'sandi_meter/file_scanner'
 
 RubyCriticSmallBadge.configure do |config|
   config.minimum_score = ENV.fetch('RUBYCRITICLIMIT', 90.0)
