@@ -56,3 +56,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "rubocop", "~> 1.12"
+
+gem "rubycritic", "~> 4.6"
+
+gem 'rubycritic-small-badge', '~> 0.2.1'
+
+gem "sandi_meter", "~> 1.2"
