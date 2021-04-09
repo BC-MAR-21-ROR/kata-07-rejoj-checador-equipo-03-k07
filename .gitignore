@@ -42,3 +42,4 @@ yarn-debug.log*
 .vagrant/
 coverage/
 .env
+Vagrantfile
