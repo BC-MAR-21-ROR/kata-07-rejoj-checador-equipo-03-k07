@@ -6,24 +6,27 @@ require 'rubycritic_small_badge'
 require 'rubycritic/rake_task'
 require 'sandi_meter/file_scanner'
 
-RubyCriticSmallBadge.configure do |config|
-  config.minimum_score = ENV.fetch('RUBYCRITICLIMIT', 90.0)
-  config.output_path = ENV.fetch('RUBYCRITPATH', 'badges/app')
-end
+{ spec: 65, app: 90 }.each do |dir, percentage|
+  RubyCriticSmallBadge.configure do |config|
+    config.minimum_score = percentage
+  end
 
-RubyCritic::RakeTask.new(:rubycritic) do |task|
-  task.options = %(
-    --custom-format RubyCriticSmallBadge::Report
-    --minimum-score #{RubyCriticSmallBadge.config.minimum_score}
-    --format html
-    --format console)
-  task.paths = FileList['app/**/*.rb']
+  RubyCritic::RakeTask.new("rubycritic:#{dir}") do |task|
+    task.options = %(
+      --custom-format RubyCriticSmallBadge::Report
+      --minimum-score #{RubyCriticSmallBadge.config.minimum_score}
+      --format html
+      --path tmp/rubycritic/#{dir}
+      --format console
+    )
+    task.paths = FileList["#{dir}/**/*.rb"]
+  end
 end
 
 task :sandi_meter do
   pp `sandi_meter -dg -o tmp/sandi_meter`
 end
 
-task default: %i[rubycritic sandi_meter]
+task default: %i[rubycritic:app rubycritic:spec sandi_meter]
 
 Rails.application.load_tasks
