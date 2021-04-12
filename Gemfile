@@ -33,6 +33,7 @@ gem 'webpacker', '~> 5.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '~> 5.0'
 end
 
 group :development do
@@ -54,7 +55,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
-  gem 'rspec-rails', '~> 5.0'
   gem 'selenium-webdriver'
   gem 'simplecov', '~> 0.21.2'
   gem 'simplecov-badge', '~> 2.0'
