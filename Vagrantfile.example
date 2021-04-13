@@ -5,7 +5,7 @@ Vagrant.configure(2) do |config|
     postgres: [
       {
        tag: "13.2-alpine",
-       map: "5433:5432", # port mapping
+       map: "5432:5432", # port mapping
        env: { "POSTGRES_HOST_AUTH_METHOD" => "trust" }
       }
     ]
