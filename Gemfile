@@ -10,7 +10,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # to use new version of bootstrap https://github.com/bootstrap-ruby/bootstrap_form/tree/bootstrap-5
 # gem "bootstrap_form", git: "https://github.com/bootstrap-ruby/bootstrap_form.git", branch: "bootstrap-5"
 gem "bootstrap_form", github: "bootstrap-ruby/bootstrap_form", branch: "bootstrap-5"
-
+# devise authentication, https://github.com/heartcombo/devise
+gem 'devise', '~> 4.7', '>= 4.7.3'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
