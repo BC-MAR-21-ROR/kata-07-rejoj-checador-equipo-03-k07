@@ -12,7 +12,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="container vh-100">
+    <div class="row vh-100 align-items-center justify-content-center ">
+      <%= yield %>
+    </div>
   </body>
 </html>
