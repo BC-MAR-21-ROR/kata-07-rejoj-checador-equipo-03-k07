@@ -26,5 +26,5 @@ if Rails.env.development?
     pp `sandi_meter -dg -o tmp/sandi_meter`
   end
 
-  task default: %i[rubycritic:app rubycritic:spec sandi_meter]
+  task code_quality: %i[rubycritic:app rubycritic:spec sandi_meter]
 end
