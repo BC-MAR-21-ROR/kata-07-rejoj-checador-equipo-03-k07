@@ -3,7 +3,7 @@
 class Log < ApplicationRecord
   belongs_to :employee
 
-  validate :one_check_in_by_day
+  validate :one_check_in_by_day, on: :create
 
   def one_check_in_by_day
     range = Time.now.beginning_of_day..Time.now.end_of_day
