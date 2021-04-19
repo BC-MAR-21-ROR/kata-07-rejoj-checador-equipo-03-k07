@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :company_branches
   end
   root to: 'company_branches#index'
+  resources :logs
 end
