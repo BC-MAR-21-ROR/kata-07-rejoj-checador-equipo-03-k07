@@ -11,8 +11,8 @@ class LogsController < ApplicationController
   end
 
   def create
-    if @log.persisted?
-      flash[:success] = 'Employee check success'
+    if @log.errors.empty?
+      flash[:success] = %{Employee #{params[:log_type]} success}
     else
       flash[:error] = @log.errors.full_messages.join(', ')
     end
