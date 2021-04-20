@@ -28,7 +28,6 @@ CompanyBranch.all.each do |company_branch|
     name: "Employee#{number}",
     email: "email#{number}",
     position: "position#{number}",
-    private_number: number,
     company_branch_id: company_branch.id
   )
 end

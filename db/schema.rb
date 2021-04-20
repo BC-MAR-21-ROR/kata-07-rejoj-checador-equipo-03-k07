@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_143211) do
+ActiveRecord::Schema.define(version: 2021_04_18_183243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,12 +37,13 @@ ActiveRecord::Schema.define(version: 2021_04_16_143211) do
     t.string "name"
     t.string "email"
     t.string "position"
-    t.integer "private_number"
+    t.string "private_number"
     t.bigint "company_branch_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "state", default: true
     t.index ["company_branch_id"], name: "index_employees_on_company_branch_id"
+    t.index ["private_number"], name: "index_employees_on_private_number", unique: true
   end
 
   add_foreign_key "company_branches", "admins"
