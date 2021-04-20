@@ -24,12 +24,12 @@ class CompanyBranchesController < ApplicationController
   def update
     @company_branch.update(company_params)
 
-    redirect_to company_branches_path, notice: 'Your company branch has been deleted'
+    redirect_to company_branches_path, notice: 'Your company branch has been updated'
   end
 
   def destroy
     @company_branch.destroy
-    redirect_to company_branches_path
+    redirect_to company_branches_path, notice: 'Your company branch has been deleted'
   end
 
   private
@@ -37,7 +37,7 @@ class CompanyBranchesController < ApplicationController
   def set_current_branch
     @company_branch = CompanyBranch.find(params[:id])
   end
-  
+
   def company_params
     params.require(:company_branch).permit(:name, :address)
   end
