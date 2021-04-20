@@ -1,20 +1,53 @@
-<h1>Listing company branches</h1>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Address</th>
-    </tr>
-  </thead>
+<div class="row">
+  <nav class="navbar navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <span class="mb-0 h1"><h1 class="navbar-brand">Admin</h1></span>
+      <%= link_to "Sign out →", destroy_admin_session_path, class: "btn btn-outline-danger", method: :delete %>
+    </div>
+  </nav>
+</div>
 
-  <tbody>
-    <% @company_branches.each do |branch| %>
-      <tr>
-        <th scope="row"><%= branch.id %></th>
-        <td> <%= branch.name %> </td>
-        <td> <%= branch.address %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-12">
+    <h3 class="text-center">Company branches</h3>
+  </div>
+
+  <div class="col-12">
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @company_branches.each do |branch| %>
+          <tr>
+            <th scope="row"><%= branch.id %></th>
+            <td><%= branch.name %></td>
+            <td><%= branch.address %></td>
+            <td class="d-flex justify-content-end ">
+              <div class="col-3">
+                <%= button_to 'Remove', company_branch_path(branch), method: :delete, data: { confirm: 'Are you sure?' }, 
+                class: "btn btn-outline-danger mr-2" %>
+              </div>
+              <div class="col-3">
+                <%= button_to 'Update', edit_company_branch_path(branch), method: :get,
+                class: "btn btn-primary" %>
+              </div>
+            </td>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
+  
+  <div class="col-12">
+    <%= link_to 'New branch', new_company_branch_path, class: 'btn btn-outline-dark' %>
+  </div>
+  
+</div>
+  
