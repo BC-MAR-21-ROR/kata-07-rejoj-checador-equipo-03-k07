@@ -1,6 +1,7 @@
 <div class="col-lg-5 text-center">
   <div class="bg-dark py-5">
-    <h2 class="text-center text-white"><span id="clock"></span></h2>
+    <h2 class="text-center text-white"><span id="date"><%=Date.today.inspect%></span></h2>
+    <h2 class="text-center text-white"><span id="clock"><%=Time.now.strftime '%T'%></span></h2>
     <%= bootstrap_form_tag(url: logs_path) do %>
       <%= text_field_tag :private_number, {}, class:"col-lg-4 my-4" %>
       <div class="actions d-flex justify-content-center">
@@ -9,3 +10,4 @@
     <% end %>
   </div>
 </div>
+<%= javascript_pack_tag 'clock' %>
