@@ -24,11 +24,12 @@ RSpec.describe Log, type: :model do
     context 'When a employee does check out' do
       it 'only must allow one by day' do
         @log = Log.create(check_in: Time.now, employee_id: employee.id)
-        @log.update(check_out: Time.now, employee_id: employee.id)
-
-        expect {
-          @log.update(check_out: Time.now, employee_id: employee.id)
-        }.not_to change(@log, :check_out)
+        @log.update(check_out: Time.now)
+        expect { @log.update!(check_out: Time.now) }.to raise_error(
+          ActiveRecord::RecordInvalid,
+          'Validation failed: check out already exist'
+        )
+      end
     end
   end
 end
