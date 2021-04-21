@@ -1,7 +1,7 @@
 <div class="col-lg-5 text-center">
   <div class="bg-dark py-5">
-    <h2 class="text-center text-white">Reloj </h2>
-    <%= bootstrap_form_tag(url: logs_path(log_type: @log_type)) do %>
+    <h2 class="text-center text-white"><span id="clock"></span></h2>
+    <%= bootstrap_form_tag(url: logs_path) do %>
       <%= text_field_tag :private_number, {}, class:"col-lg-4 my-4" %>
       <div class="actions d-flex justify-content-center">
         <%= submit_tag @log_type, class:"col-lg-3 btn btn-primary" %>
