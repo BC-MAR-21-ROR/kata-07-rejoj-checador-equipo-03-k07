@@ -30,11 +30,11 @@ class LogsController < ApplicationController
   end
 
   def find_log_type
-    if params[:commit] == 'check_in'
-      @log = @employee.logs.create(check_in: Time.now)
-    else
-      @log = @employee.logs.find_by(check_in: Time.now.beginning_of_day..Time.now.end_of_day)
-      @log.update(check_out: Time.now)
-    end
+    return @log = @employee.logs.create(check_in: Time.now) if params[:commit] == 'check_in'
+
+    @log = @employee.logs.find_by(check_in: Time.now.beginning_of_day..Time.now.end_of_day)
+    return redirect_to check_in_path, flash: { error: 'Must check_in first' } unless @log
+
+    @log.update(check_out: Time.now)
   end
 end
