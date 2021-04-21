@@ -16,8 +16,19 @@ RSpec.describe Log, type: :model do
         expect {
           Log.create(check_in: Time.now, employee_id: employee.id)
           Log.create(check_in: Time.now, employee_id: employee.id)
-        }.to change( Log, :count).by(1)
+        }.to change(Log, :count).by(1)
       end
+    end
+  end
+  describe '#one_check_out_by_day' do
+    context 'When a employee does check out' do
+      it 'only must allow one by day' do
+        @log = Log.create(check_in: Time.now, employee_id: employee.id)
+        @log.update(check_out: Time.now, employee_id: employee.id)
+
+        expect {
+          @log.update(check_out: Time.now, employee_id: employee.id)
+        }.not_to change(@log, :check_out)
     end
   end
 end
