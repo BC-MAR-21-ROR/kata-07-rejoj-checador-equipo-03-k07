@@ -33,6 +33,5 @@ class LogsController < ApplicationController
       @log = @employee.logs.find_by(check_in: Time.now.beginning_of_day..Time.now.end_of_day)
       @log.update(check_out: Time.now)
     end
-    #   @log_type = params[:log_type] if ['check_in', 'check_out'].include?(params[:log_type])
   end
 end
