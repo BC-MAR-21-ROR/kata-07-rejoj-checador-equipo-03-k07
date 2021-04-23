@@ -6,4 +6,10 @@ Rails.application.routes.draw do
     resources :company_branches
   end
   root to: 'company_branches#index'
+
+  resources :logs, only: :create
+  scope 'logs' do
+    get 'check_in', to: 'logs#new'
+    get 'check_out', to: 'logs#new'
+  end
 end

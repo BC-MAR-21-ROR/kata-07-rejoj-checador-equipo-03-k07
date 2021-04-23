@@ -4,7 +4,7 @@ module ApplicationHelper
       'error' => :danger,
       'notice' => :primary,
       'alert' => :warning,
-      'sucess' => :sucess
+      'success' => :success
     }.fetch(type, 'notice')
   end
 end
