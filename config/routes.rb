@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   scope :admins do
-    resources :company_branches
+    resources :company_branches do
+      resources :employees
+    end
   end
   root to: 'company_branches#index'
 
