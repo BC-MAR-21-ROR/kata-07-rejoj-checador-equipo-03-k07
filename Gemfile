@@ -14,6 +14,8 @@ gem "bootstrap_form", github: "bootstrap-ruby/bootstrap_form", branch: "bootstra
 gem 'devise', '~> 4.7', '>= 4.7.3'
 # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#setup
 gem "factory_bot_rails"
+# https://github.com/faker-ruby/faker
+gem "faker"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
