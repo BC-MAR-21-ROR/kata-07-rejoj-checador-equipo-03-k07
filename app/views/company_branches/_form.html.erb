@@ -1,0 +1,11 @@
+<%= bootstrap_form_with(model: [@admin, company_branch], local: true) do |form| %>
+    <div class="field">
+        <%= form.text_field :name, class: "form-control"%>
+    </div>
+    <div class="field">
+        <%= form.text_field :address, class: "form-control"%>
+    </div>
+    <div class="actions d-flex justify-content-center mt-4">
+        <%= form.submit %>
+    </div>
+<% end %>

@@ -7,19 +7,20 @@
   </nav>
 </div>
 
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-12">
     <h3 class="text-center">Company branches</h3>
   </div>
 
-  <div class="col-12">
+  <div class="col-8">
+  <hr class="bg-dark border-1">
     <table class="table table-striped">
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Address</th>
-          <th colspan="2"></th>
+          <th colspan="1"></th>
         </tr>
       </thead>
 
@@ -29,14 +30,18 @@
             <th scope="row"><%= branch.id %></th>
             <td><%= branch.name %></td>
             <td><%= branch.address %></td>
-            <td class="d-flex justify-content-end ">
-              <div class="col-3">
-                <%= button_to 'Remove', company_branch_path(branch), method: :delete, data: { confirm: 'Are you sure?' }, 
-                class: "btn btn-outline-danger mr-2" %>
+            <td class="d-flex justify-content-end mx-2">
+              <div class="col-2">
+                <%= button_to 'Show', company_branch_employees_path(branch), method: :get, 
+                class: "btn btn-outline-secondary" %>
               </div>
-              <div class="col-3">
-                <%= button_to 'Update', edit_company_branch_path(branch), method: :get,
-                class: "btn btn-primary" %>
+              <div class="col-2">
+                <%= button_to 'Edit', edit_company_branch_path(branch), method: :get,
+                class: "btn btn-outline-primary" %>
+              </div>
+              <div class="col-2 mx-4">
+                <%= button_to 'Remove', company_branch_path(branch), method: :delete, data: { confirm: 'Are you sure?' }, 
+                class: "btn btn-outline-danger" %>
               </div>
             </td>
         <% end %>
@@ -45,8 +50,8 @@
     <br>
   </div>
   
-  <div class="col-12">
-    <%= link_to 'New branch', new_company_branch_path, class: 'btn btn-outline-dark' %>
+  <div class="col-2 offset-7">
+    <%= link_to 'New branch', new_company_branch_path, class: 'btn btn-primary mx-4' %>
   </div>
   
 </div>
