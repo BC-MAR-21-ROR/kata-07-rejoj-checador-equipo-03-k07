@@ -108,6 +108,11 @@ GEM
     equalizer (0.0.11)
     erubi (1.10.0)
     erubis (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.15.0)
     ffi (1.15.0-x64-mingw32)
     flay (2.12.1)
@@ -347,6 +352,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise (~> 4.7, >= 4.7.3)
+  factory_bot_rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.2.3)
