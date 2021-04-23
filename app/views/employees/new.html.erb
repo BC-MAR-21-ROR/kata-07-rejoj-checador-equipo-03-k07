@@ -1,0 +1,13 @@
+<div class="col-lg-5">
+	<div class="card">
+		<div class="card-header bg-dark mb-4">
+			<h2 class="text-center text-white"> New Employee</h2>
+		</div>
+		<div class="card-body">
+			<%= render 'form', employee: @employee %>
+		</div>
+		<div class="col-lg-4 mb-4 mx-4">
+			<%= link_to 'Back', company_branch_employees_path(@company_branch), class:"btn btn-dark text-white" %>	
+		</div>
+	</div>
+</div>
