@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_213517) do
     t.string "name"
     t.string "email"
     t.string "position"
-    t.bigint "employee_number"
+    t.integer "employee_number"
     t.string "private_number"
     t.bigint "company_branch_id", null: false
     t.datetime "created_at", precision: 6, null: false
