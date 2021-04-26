@@ -1,15 +1,13 @@
-<h1>New branch</h1>
-
-<%= form_with model: @company_branch, url:  company_branch_path, local: true do |form| %>
-  <div class="mb-3">
-    <%= form.label :name%>
-    <%= form.text_field :name, class: "form-control"%>
-  </div>
-  <div class="mb-3">
-    <%= form.label :address%>
-    <%= form.text_field :address, class: "form-control"%>
-  </div>
-  <div class="mb-3">
-    <%= form.submit "Save", class: "btn btn-primary" %>
-  </div>
-<% end %>
+<div class="col-5">
+  <div class="card">
+    <div class="card-header mb-3 bg-dark text-white text-center">
+      <h1>Editing Branch</h1>
+    </div>
+    <div class="card-body">
+      <%= render 'form', company_branch: @company_branch %>
+    </div>
+    <div class="col-12 mb-4 mx-4">
+      <%= link_to 'Back', company_branches_path, class:"btn btn-dark col-2 text-white" %>	
+    </div>
+  </div>  
+</div>

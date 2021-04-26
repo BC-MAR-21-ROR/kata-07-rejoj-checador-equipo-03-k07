@@ -1,0 +1,40 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-6">
+    <div class="card text-center">
+      <div class="card-header bg-dark text-white h2 mb-3">
+        Employee
+      </div>
+      <div class="card-body">
+        <div class="col-12">
+          <dl class="row text-start">
+            <dt class="col-6"><strong>Email:</strong></dt>
+            <dd class="col-6"><%= @employee.email %></dd>
+      
+            <dt class="col-6"><strong>Name:</strong></dt>
+            <dd class="col-6"><%= @employee.name %></dd>
+            
+            <dt class="col-6"><strong>Position:</strong></dt>
+            <dd class="col-6"><%= @employee.position %></dd>
+      
+            <dt class="col-6"><strong>Employee number:</strong></dt>
+            <dd class="col-6"><%= @employee.employee_number %></dd>
+      
+            <dt class="col-6"><strong>Private number:</strong></dt>
+            <dd class="col-6"><%= @employee.private_number %></dd>
+            
+            <dt class="col-6"><strong>Company branches:</strong></dt>
+            <dd class="col-6"><%= @employee.company_branch_id %></dd>
+          </dl>
+        </div>
+      </div>
+    
+        <div class="col-12 my-1">
+          <%= link_to 'Edit', edit_company_branch_employee_path(@company_branch, @employee),class:"btn btn-primary col-2 text-white" %> 
+        </div>
+        <div class="col-12 mb-4 mt-2 mx-5 d-flex justify-content-start">
+          <%= link_to 'Back', company_branch_employees_path, class:"btn btn-dark col-2 text-white" %>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>

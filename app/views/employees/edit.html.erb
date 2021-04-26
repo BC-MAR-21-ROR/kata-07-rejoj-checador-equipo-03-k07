@@ -1,0 +1,15 @@
+<div class="col-lg-5">
+    <div class="card">
+        <div class="card-header mb-3 bg-dark text-white text-center">
+            <h2>Editing Employee</h2>
+        </div>
+        <div class="card-body">
+            <%= render 'form', employee: @employee %>
+        </div>
+        <div class="col-12 mb-4 mx-4">
+            <div class="btn-group" role="group">
+                <%= link_to 'Back', company_branch_employees_path(@company_branch), class:"btn btn-dark text-white" %>
+            </div>
+        </div>
+    </div>
+</div>
