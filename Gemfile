@@ -20,6 +20,8 @@ gem "faker"
 # gem 'image_processing', '~> 1.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+# https://github.com/ddnexus/pagy
+gem 'pagy', '~> 3.5'
 # Use postgres as the database for Active Record
 gem 'pg', '~> 1.2.3'
 # Use Puma as the app server
