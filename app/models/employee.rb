@@ -6,7 +6,10 @@ class Employee < ApplicationRecord
 
   before_create :generate_private_number, :generate_employee_number
 
+  validates :name, :email, :position, presence: true
   validates :private_number, uniqueness: true
+  validates :email, uniqueness: true
+
 
   private
 
