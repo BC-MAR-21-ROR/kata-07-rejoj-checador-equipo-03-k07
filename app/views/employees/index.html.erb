@@ -32,6 +32,9 @@
         <% end %>
       </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
   </div>
   <div class="d-flex justify-content-between col-lg-12">
     <%= link_to '← Back', company_branches_path, class:"btn btn-dark text-white"%>
