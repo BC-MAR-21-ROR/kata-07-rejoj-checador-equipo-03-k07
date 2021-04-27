@@ -64,9 +64,8 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
-  gem 'database_cleaner-active_record', '~> 2.0'
-  gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
   gem 'simplecov', '~> 0.21.2'
   gem 'simplecov-badge', '~> 2.0'
   # Easy installation and use of web drivers to run system tests with browsers
