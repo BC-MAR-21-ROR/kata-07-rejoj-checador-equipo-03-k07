@@ -43,4 +43,3 @@ yarn-debug.log*
 coverage/
 .env
 Vagrantfile
-Gemfile.lock
