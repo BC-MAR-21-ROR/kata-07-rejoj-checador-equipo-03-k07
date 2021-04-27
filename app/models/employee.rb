@@ -2,7 +2,7 @@
 
 class Employee < ApplicationRecord
   belongs_to :company_branch
-  has_many :logs
+  has_many :logs, dependent: :delete_all
 
   before_create :generate_private_number, :generate_employee_number
 
