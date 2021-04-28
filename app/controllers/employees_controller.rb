@@ -33,11 +33,13 @@ class EmployeesController < ApplicationController
   end
 
   def change_state
-    if @employee.update( state: params[:state] == "true")
-      flash[:success] = %{Employee "#{@employee.name}" state updated}
-    else
-      flash[:error] = %{Employee could not be updated}
-    end
+    @employee.toggle!(:state)
+    # if @employee.update(state: params[:state] == 'true')
+    #   @employee.toggle!(:state)
+    #   flash[:success] = %{Employee "#{@employee.name}" state updated}
+    # else
+    #   flash[:error] = %{Employee could not be updated}
+    # end
     redirect_to company_branch_employees_path(@company_branch)
   end
 
