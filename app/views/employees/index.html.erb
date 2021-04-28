@@ -23,11 +23,12 @@
             <td><%= employee.email %></td>
             <td><%= employee.position %></td>
             <td><%= employee.private_number %></td>
-            <td><%= employee.state %></td>            
-            <td>
-              <%= link_to 'Switch', switch_state_employee_company_branch_employee_path(@company_branch, employee, state: !employee.state),
-              method: :patch, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-warning" %>
-            </td>
+            <td><%= employee.state %></td> 
+            <td class="employee-<%= employee.id %>">
+              <%= link_to "#{ employee.state ? 'Enabled' : 'Disabled' }", 
+              switch_state_employee_company_branch_employee_path(@company_branch, employee), 
+              method: :patch, remote: :true, class: "btn btn-xs btn-#{ employee.state ? 'success' : 'warning' }"  %>
+            </td>           
             <td><%= link_to 'Show', company_branch_employee_path(@company_branch, employee),
               class: "btn btn-outline-secondary" %>
             </td>
