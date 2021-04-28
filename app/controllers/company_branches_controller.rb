@@ -2,7 +2,7 @@ class CompanyBranchesController < ApplicationController
   before_action :set_current_branch, only: %i[edit update destroy]
 
   def index
-    @company_branches = CompanyBranch.all
+    @pagy, @company_branches = pagy(CompanyBranch.all, items: 10)
   end
 
   def new

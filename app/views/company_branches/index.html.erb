@@ -1,26 +1,14 @@
-<div class="row">
-  <nav class="navbar navbar-light bg-light fixed-top">
-    <div class="container-fluid">
-      <span class="mb-0 h1"><h1 class="navbar-brand">Admin</h1></span>
-      <%= link_to "Sign out →", destroy_admin_session_path, class: "btn btn-outline-danger", method: :delete %>
-    </div>
-  </nav>
-</div>
-
-<div class="row justify-content-center">
-  <div class="col-12">
-    <h3 class="text-center">Company branches</h3>
-  </div>
-
-  <div class="col-8">
-  <hr class="bg-dark border-1">
-    <table class="table table-striped">
+<%= render partial: "layouts/navbar"%>
+<div class="col-lg-10">
+  <h3 class="text-center my-3">Company branches</h3>
+  <div class="table-responsive">
+    <table class="table table-hover table-sm">
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Address</th>
-          <th colspan="1"></th>
+          <th colspan="3"></th>
         </tr>
       </thead>
 
@@ -30,29 +18,25 @@
             <th scope="row"><%= branch.id %></th>
             <td><%= branch.name %></td>
             <td><%= branch.address %></td>
-            <td class="d-flex justify-content-end mx-2">
-              <div class="col-2">
-                <%= button_to 'Show', company_branch_employees_path(branch), method: :get, 
-                class: "btn btn-outline-secondary" %>
-              </div>
-              <div class="col-2">
-                <%= button_to 'Edit', edit_company_branch_path(branch), method: :get,
-                class: "btn btn-outline-primary" %>
-              </div>
-              <div class="col-2 mx-4">
-                <%= button_to 'Remove', company_branch_path(branch), method: :delete, data: { confirm: 'Are you sure?' }, 
-                class: "btn btn-outline-danger" %>
-              </div>
+            <td><%= link_to 'Show', company_branch_employees_path(branch),
+              class: "btn btn-outline-secondary" %>
             </td>
+            <td><%= link_to 'Edit', edit_company_branch_path(branch),
+              class: "btn btn-outline-primary" %>
+            </td>
+            <td><%= link_to 'Remove', company_branch_path(branch),
+              method: :delete, data: { confirm: 'Are you sure?' },
+              class: "btn btn-outline-danger" %>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>
-    <br>
+    <div class="d-flex justify-content-center">
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
   </div>
-  
-  <div class="col-2 offset-7">
-    <%= link_to 'New branch', new_company_branch_path, class: 'btn btn-primary mx-4' %>
+  <div class="col-lg-12 d-flex justify-content-end">
+    <%= link_to 'New branch', new_company_branch_path, class: 'btn btn-primary' %>
   </div>
-  
 </div>
-  

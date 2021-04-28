@@ -2,9 +2,8 @@ class EmployeesController < ApplicationController
   before_action :set_current_branch
   before_action :set_employee, only: %i[ show edit update destroy ]
 
-
   def index
-    @employees = @company_branch.employees
+    @pagy, @employees = pagy(@company_branch.employees, items: 10)
   end
 
   def show; end
@@ -36,9 +35,9 @@ class EmployeesController < ApplicationController
   def employee_params
     params.require(:employee).permit(:email, :name, :position, :employee_number, :private_number)
   end
-    
-  def set_employee 
-    @employee = Employee.find(params[:id])
+
+  def set_employee
+    @employee = @company_branch.employees.find(params[:id])
   end
 
   def set_current_branch

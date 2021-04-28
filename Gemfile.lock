@@ -157,6 +157,7 @@ GEM
     nokogiri (1.11.2-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (3.10.0)
     parallel (1.20.1)
     parser (3.0.1.0)
       ast (~> 2.4.1)
@@ -312,8 +313,6 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2021.1)
-      tzinfo (>= 1.0.0)
     unicode-display_width (2.0.0)
     victor (0.2.8)
     virtus (1.0.5)
@@ -358,6 +357,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  pagy (~> 3.5)
   pg (~> 1.2.3)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -383,4 +383,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   2.2.15
+   2.2.16
