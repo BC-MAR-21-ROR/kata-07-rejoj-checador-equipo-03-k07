@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   scope :admins do
     resources :company_branches do
-      resources :employees
+      resources :employees do
+        patch 'change_state', as: 'switch_state_employee', on: :member
+      end
     end
   end
   root to: 'company_branches#index'
