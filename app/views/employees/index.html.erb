@@ -10,6 +10,7 @@
           <th scope="col">Email</th>
           <th scope="col">Position</th>
           <th scope="col">Private number</th>
+          <th scope="col">State</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -22,11 +23,16 @@
             <td><%= employee.email %></td>
             <td><%= employee.position %></td>
             <td><%= employee.private_number %></td>
+            <td><%= employee.state %></td>            
+            <td>
+              <%= link_to 'Switch', switch_state_employee_company_branch_employee_path(@company_branch, employee, state: !employee.state),
+              method: :patch, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-warning" %>
+            </td>
             <td><%= link_to 'Show', company_branch_employee_path(@company_branch, employee),
-            class: "btn btn-outline-secondary" %>
+              class: "btn btn-outline-secondary" %>
             </td>
             <td><%= link_to 'Edit', edit_company_branch_employee_path(@company_branch, employee),
-            class: "btn btn-outline-primary" %>
+              class: "btn btn-outline-primary" %>
             </td>
           </tr>
         <% end %>
