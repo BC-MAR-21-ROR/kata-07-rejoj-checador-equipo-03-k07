@@ -1,9 +1,10 @@
 class EmployeesController < ApplicationController
   before_action :set_current_branch
-  before_action :set_employee, only: %i[ show edit update destroy ]
-
+  before_action :set_employee, only: %i[ show edit update destroy change_state]
+  
   def index
     @pagy, @employees = pagy(@company_branch.employees, items: 10)
+    @employees = @company_branch.employees.order(state: :desc)
   end
 
   def show; end
@@ -31,9 +32,18 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def change_state
+    if @employee.update( state: params[:state] == "true")
+      flash[:success] = %{Employee "#{@employee.name}" state updated}
+    else
+      flash[:error] = %{Employee could not be updated}
+    end
+    redirect_to company_branch_employees_path(@company_branch)
+  end
+
   private
   def employee_params
-    params.require(:employee).permit(:email, :name, :position, :employee_number, :private_number)
+    params.require(:employee).permit(:email, :name, :position, :employee_number, :private_number, :state)
   end
 
   def set_employee
