@@ -2,11 +2,14 @@
 
 class Employee < ApplicationRecord
   belongs_to :company_branch
-  has_many :logs
+  has_many :logs, dependent: :delete_all
 
   before_create :generate_private_number, :generate_employee_number
 
+  validates :name, :email, :position, presence: true
   validates :private_number, uniqueness: true
+  validates :email, uniqueness: true
+
 
   private
 
