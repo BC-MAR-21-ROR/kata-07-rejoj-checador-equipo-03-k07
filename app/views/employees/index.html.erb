@@ -27,7 +27,7 @@
             <td class="employee-<%= employee.id %>">
               <%= link_to "#{ employee.state ? 'Enabled' : 'Disabled' }", 
               switch_state_employee_company_branch_employee_path(@company_branch, employee), 
-              method: :patch, remote: :true, class: "btn btn-xs btn-#{ employee.state ? 'success' : 'warning' }"  %>
+              method: :patch, remote: :true, class: "btn btn-xs btn-outline-#{ employee.state ? 'success' : 'warning' }"  %>
             </td>           
             <td><%= link_to 'Show', company_branch_employee_path(@company_branch, employee),
               class: "btn btn-outline-secondary" %>
