@@ -8,10 +8,7 @@ Rails.application.routes.draw do
         patch 'change_state', as: 'switch_state_employee', on: :member
       end
     end
-    scope :reports do
-      get '', to: 'reports#index'
-      get ':report', to: 'reports#show'
-    end
+    resources :reports, param: :report, only: %i[ index show]
   end
   root to: 'company_branches#index'
 
