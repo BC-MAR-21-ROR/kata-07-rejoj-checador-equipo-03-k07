@@ -13,7 +13,11 @@ class Log < ApplicationRecord
   }
   scope :by_employee, ->(employee_id) { where(employee_id: employee_id) }
   scope :average_check, ->(check) { average(%(#{check}::time)) }
-
+  scope :absence_by_month, lambda { |date|
+    by_month(date).joins(:employee).select(
+      %(employees.id, employees.name, #{workdays(date)} - count(*) as absence)
+    ).group('employees.id')
+  }
   def one_check_in_by_day
     range = Time.now.beginning_of_day..Time.now.end_of_day
     error = 'check in already exist'
@@ -24,5 +28,9 @@ class Log < ApplicationRecord
     range = Time.now.beginning_of_day..Time.now.end_of_day
     error = 'check out already exist'
     errors.add :base, error if employee.logs.exists?(check_out: range)
+  end
+
+  def self.workdays(date)
+    (date.beginning_of_month..date.end_of_month).count(&:on_weekday?)
   end
 end

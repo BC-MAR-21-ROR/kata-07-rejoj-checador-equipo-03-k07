@@ -11,6 +11,8 @@ class ReportsController < ApplicationController
       @results = attendance
     when 'average_check'
       @results = average_check
+    when 'absence'
+      @results = absence
     else
       return render file: %(#{Rails.root}/public/404.html), layout: false, status: 404
     end
@@ -38,9 +40,13 @@ class ReportsController < ApplicationController
   def average_check
     [
       {
-        check_in: Time.at(Log.by_month(Date.today).average_check('check_in')).to_s(:time),
-        check_out: Time.at(Log.by_month(Date.today).average_check('check_out')).to_s(:time),
+        check_in: Time.at(Log.by_month(date).average_check('check_in')).to_s(:time),
+        check_out: Time.at(Log.by_month(date).average_check('check_out')).to_s(:time)
       }
     ]
+  end
+
+  def absence
+    Log.absence_by_month(date).map(&:attributes)
   end
 end
