@@ -9,10 +9,13 @@ class ReportsController < ApplicationController
     case params[:report]
     when 'attendance', 'average_check', 'absence'
       @results = Log.send(params[:report], date)
+      respond_to do |format|
+        format.xlsx
+        format.html { render :index }
+      end
     else
       return render file: %(#{Rails.root}/public/404.html), layout: false, status: 404
     end
-    render :index
   end
 
   private
