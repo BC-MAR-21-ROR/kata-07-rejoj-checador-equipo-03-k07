@@ -12,6 +12,7 @@ class Log < ApplicationRecord
     joins(:employee).where(employee: { company_branch_id: company_branch_id })
   }
   scope :by_employee, ->(employee_id) { where(employee_id: employee_id) }
+  scope :average_check, ->(check) { average(%(#{check}::time)) }
 
   def one_check_in_by_day
     range = Time.now.beginning_of_day..Time.now.end_of_day

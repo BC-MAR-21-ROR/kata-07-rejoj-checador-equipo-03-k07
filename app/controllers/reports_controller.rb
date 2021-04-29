@@ -2,13 +2,18 @@
 
 class ReportsController < ApplicationController
   def index
-    @attendances = attendance
+    @results = attendance
   end
 
   def show
-    return unless params[:report] == 'attendance'
-
-    @attendances = attendance
+    case params[:report]
+    when 'attendance'
+      @results = attendance
+    when 'average_check'
+      @results = average_check
+    else
+      return render file: %(#{Rails.root}/public/404.html), layout: false, status: 404
+    end
     render :index
   end
 
@@ -23,9 +28,19 @@ class ReportsController < ApplicationController
       {
         employee_id: log.employee.id,
         employee_name: log.employee.name,
-        company_branch_name: log.employee.company_branch.name
+        company_branch_name: log.employee.company_branch.name,
+        date: date
       }
     end
     @logs_by_day.sort_by! { |log| log[:company_branch_name] }
+  end
+
+  def average_check
+    [
+      {
+        check_in: Time.at(Log.by_month(Date.today).average_check('check_in')).to_s(:time),
+        check_out: Time.at(Log.by_month(Date.today).average_check('check_out')).to_s(:time),
+      }
+    ]
   end
 end
