@@ -40,6 +40,7 @@ class ReportsController < ApplicationController
   def average_check
     [
       {
+        company_branch: %(total : #{CompanyBranch.count}),
         check_in: Time.at(Log.by_month(date).average_check('check_in')).to_s(:time),
         check_out: Time.at(Log.by_month(date).average_check('check_out')).to_s(:time)
       }
