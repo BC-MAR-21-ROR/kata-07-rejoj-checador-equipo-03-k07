@@ -2,7 +2,7 @@
 
 wb = xlsx_package.workbook
 wb.add_worksheet(name: params[:report]) do |sheet|
-  sheet.add_row(@results&.first.keys)
+  sheet.add_row(@results.first.keys)
 
   @results.each do |result|
     sheet.add_row(result.values)

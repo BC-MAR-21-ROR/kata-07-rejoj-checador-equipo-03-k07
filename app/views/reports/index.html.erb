@@ -9,7 +9,7 @@
     <table class="table table-hover table-sm">
       <thead class="table-dark">
         <tr>
-          <%- @results&.first.keys.each do |header| %>
+          <%- @results.first&.keys&.each do |header| %>
           <th scope="col"><%= header %></th>
           <% end %>
         </tr>

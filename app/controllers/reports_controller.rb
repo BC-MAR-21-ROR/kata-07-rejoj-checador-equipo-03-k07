@@ -9,6 +9,9 @@ class ReportsController < ApplicationController
     case params[:report]
     when 'attendance', 'average_check', 'absence'
       @results = Log.send(params[:report], date)
+
+      return redirect_to(reports_path, alert: 'No results for this report') if @results.empty?
+
       respond_to do |format|
         format.xlsx
         format.html { render :index }
