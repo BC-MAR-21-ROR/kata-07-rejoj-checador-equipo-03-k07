@@ -1,0 +1,12 @@
+<% if @employee.state%>
+    $(".employee-<%= @employee.id %> > a")
+    .html('Enabled')
+    .removeClass('btn-warning')
+    .addClass('btn-success')
+<% else %>
+    $(".employee-<%= @employee.id %> > a")
+    .html('Disabled')
+    .removeClass('btn-success')
+    .addClass('btn-warning')
+<% end %>
+$("#employee-status-<%= @employee.id %>").html("<%= @employee.state %>")
