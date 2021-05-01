@@ -8,6 +8,7 @@
   <div class="table-responsive">
     <table class="table table-hover table-sm">
       <thead class="table-dark">
+        <%= render partial: "layouts/input_date"%>
         <tr>
           <%- @results.first&.keys&.each do |header| %>
           <th scope="col"><%= header %></th>
