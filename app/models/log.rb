@@ -32,14 +32,23 @@ class Log < ApplicationRecord
   end
 
   def self.average_check(date)
-    [
+    CompanyBranch.all.map do |company_branch|
       {
         month: date.strftime('%b %Y'),
-        company_branch: %(total : #{CompanyBranch.count}),
-        check_in: Time.at(by_month(date).average_time('check_in')).to_s(:time),
-        check_out: Time.at(by_month(date).average_time('check_out')).to_s(:time)
+        company_branch: company_branch.name,
+        check_in: Time.at(by_month(date).by_company_branch(company_branch.id).average_time('check_in')).to_s(:time),
+        check_out: Time.at(by_month(date).by_company_branch(company_branch.id).average_time('check_out')).to_s(:time)
       }
-    ]
+    end.push(average_by_all_company_branch(date))
+  end
+
+  def self.average_by_all_company_branch(date)
+    {
+      month: date.strftime('%b %Y'),
+      company_branch: %(Total CompanyBranch : #{CompanyBranch.count}),
+      check_in: Time.at(by_month(date).average_time('check_in')).to_s(:time),
+      check_out: Time.at(by_month(date).average_time('check_out')).to_s(:time)
+    }
   end
 
   def self.absence(date)
