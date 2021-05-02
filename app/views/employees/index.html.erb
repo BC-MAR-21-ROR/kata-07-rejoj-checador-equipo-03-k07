@@ -23,17 +23,27 @@
             <td><%= employee.email %></td>
             <td><%= employee.position %></td>
             <td><%= employee.private_number %></td>
-            <td><%= employee.state %></td> 
-            <td class="employee-<%= employee.id %>">
-              <%= link_to "#{ employee.state ? 'Enabled' : 'Disabled' }", 
-              switch_state_employee_company_branch_employee_path(@company_branch, employee), 
-              method: :patch, remote: :true, class: "btn btn-xs btn-outline-#{ employee.state ? 'success' : 'warning' }"  %>
-            </td>           
-            <td><%= link_to 'Show', company_branch_employee_path(@company_branch, employee),
-              class: "btn btn-outline-secondary" %>
+            <td>
+              <div class="form-check form-switch">
+                <%= link_to switch_state_employee_company_branch_employee_path(@company_branch, employee),
+                  title: "toggle state" , "data-bs-toggle" => :tooltip,
+                  method: :patch,data: { confirm: "Are you sure about #{ employee.state? ? 'disabling' : 'enabling' } employee ?"} do %>
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" <%= "checked" if employee.state? %>>
+                  <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                <%end%>
+              </div>
             </td>
-            <td><%= link_to 'Edit', edit_company_branch_employee_path(@company_branch, employee),
-              class: "btn btn-outline-primary" %>
+            <td>
+              <%= link_to company_branch_employee_path(@company_branch, employee),
+                title: "show", "data-bs-toggle" => :tooltip do %>
+                <i class="bi bi-eye"></i>
+              <%end%>
+            </td>
+            <td>
+              <%= link_to  edit_company_branch_employee_path(@company_branch, employee),
+                title: "edit" , "data-bs-toggle" => :tooltip do %>
+                <i class="bi bi-pencil"></i>
+              <%end%>
             </td>
           </tr>
         <% end %>
