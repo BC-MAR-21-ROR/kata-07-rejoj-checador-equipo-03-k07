@@ -18,15 +18,21 @@
             <th scope="row"><%= branch.id %></th>
             <td><%= branch.name %></td>
             <td><%= branch.address %></td>
-            <td><%= link_to 'Show', company_branch_employees_path(branch),
-              class: "btn btn-outline-secondary" %>
+            <td>
+              <%= link_to company_branch_employees_path(branch), title: "show" , "data-bs-toggle" => :tooltip do %>
+                <i class="bi bi-eye"></i>
+              <%end%>
             </td>
-            <td><%= link_to 'Edit', edit_company_branch_path(branch),
-              class: "btn btn-outline-primary" %>
+            <td>
+              <%= link_to edit_company_branch_path(branch), title: "edit" , "data-bs-toggle" => :tooltip do %>
+                <i class="bi bi-pencil"></i>
+              <%end%>
             </td>
-            <td><%= link_to 'Remove', company_branch_path(branch),
-              method: :delete, data: { confirm: 'Are you sure?' },
-              class: "btn btn-outline-danger" %>
+            <td>
+              <%= link_to company_branch_path(branch), title: "trash" , "data-bs-toggle" => :tooltip,
+                method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <i class="bi bi-trash"></i>
+              <%end%>
             </td>
           </tr>
         <% end %>
