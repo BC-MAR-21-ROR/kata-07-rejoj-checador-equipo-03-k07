@@ -19,7 +19,7 @@ class EmployeesController < ApplicationController
     @employee = @company_branch.employees.build(employee_params)
     if @employee.save
       redirect_to company_branch_employees_path(@company_branch),
-                  notice: 'Your company branch has been created'
+                  flash: { success: 'Your employee has been created' }
     else
       render :new
     end
@@ -28,7 +28,7 @@ class EmployeesController < ApplicationController
   def update
     if @employee.update(employee_params)
       redirect_to company_branch_employees_path(@company_branch),
-                  notice: 'Your company branch has been updated'
+                  flash: { success: 'Your employee has been updated' }
     end
   end
 
