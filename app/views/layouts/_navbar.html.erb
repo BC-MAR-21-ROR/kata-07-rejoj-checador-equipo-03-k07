@@ -1,7 +1,9 @@
 <nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <span class="navbar-brand mx-5"><%= image_tag "logo-bc.png", height:"35"%></span>
-    <%= link_to "Report", reports_path, class: "btn btn-outline-dark mx-3 #{'active' if request.path.include?('reports')}" %>
-    <%= link_to "Sign out →", destroy_admin_session_path, class: "btn btn-outline-primary", method: :delete %>
+    <div class= "d-flex justify-content-end">
+      <%= link_to "Report", reports_path, class: "btn btn-outline-dark mx-3 #{'active' if request.path.include?('reports')}" %>
+      <%= link_to "Sign out →", destroy_admin_session_path, class: "btn btn-outline-primary", method: :delete %>
+    </div>
   </div>
 </nav>
