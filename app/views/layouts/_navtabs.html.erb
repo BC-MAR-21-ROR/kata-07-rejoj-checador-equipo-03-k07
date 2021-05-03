@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs mb-4">
+  <li class="nav-item">
+    <%= link_to "Attendance", report_path(:attendance), id: "attendance", class: "nav-link text-dark" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Average", report_path(:average_check), id: "average_check", class: "nav-link text-dark"%>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Absence", report_path(:absence),  id: "absence", class: "nav-link text-dark" %>
+  </li>
+</ul>
+<%= javascript_pack_tag 'navtabs' %>
