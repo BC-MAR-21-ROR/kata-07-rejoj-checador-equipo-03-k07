@@ -7,7 +7,7 @@ class Log < ApplicationRecord
   validate :one_check_out_by_day, on: :update
 
   scope :by_day, ->(date) { where(check_in: date) }
-  scope :by_month, ->(date) { where(check_in: date.beginning_of_month..date.end_of_month) }
+  scope :by_month, ->(date) { where(check_in: (date - 1.month)..Date.today) }
   scope :by_company_branch, lambda { |company_branch_id|
     joins(:employee).where(employee: { company_branch_id: company_branch_id })
   }
