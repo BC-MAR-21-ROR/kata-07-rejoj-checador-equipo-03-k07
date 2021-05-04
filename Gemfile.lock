@@ -157,10 +157,14 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.0.3)
+    mini_portile2 (2.5.1)
     minitest (5.14.4)
     mixlib-cli (2.1.8)
     msgpack (1.4.2)
     nio4r (2.5.7)
+    nokogiri (1.11.2)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogiri (1.11.2-x64-mingw32)
       racc (~> 1.4)
     nokogiri (1.11.2-x86_64-darwin)
@@ -360,6 +364,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  ruby
   x64-mingw32
   x86_64-darwin-19
   x86_64-linux
@@ -402,13 +407,5 @@ DEPENDENCIES
 RUBY VERSION
    ruby 2.7.2p137
 
-BUNDLED WITH
-   2.2.16
-BUNDLED WITH
-   2.2.16
-   ruby 2.7.2p137
-
-BUNDLED WITH
-   2.2.16
 BUNDLED WITH
    2.2.16
