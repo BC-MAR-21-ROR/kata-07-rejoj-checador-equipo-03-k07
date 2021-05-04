@@ -13,7 +13,7 @@ class CompanyBranchesController < ApplicationController
     @company_branch = CompanyBranch.new(company_params)
     @company_branch.admin_id = current_admin.id
     if @company_branch.save
-      redirect_to company_branches_path, notice: 'Successfully created company branch'
+      redirect_to company_branches_path, flash: { success: 'Successfully created company branch' }
     else
       render :new
     end
@@ -24,12 +24,12 @@ class CompanyBranchesController < ApplicationController
   def update
     @company_branch.update(company_params)
 
-    redirect_to company_branches_path, notice: 'Your company branch has been updated'
+    redirect_to company_branches_path, flash: { success: 'Your company branch has been updated' }
   end
 
   def destroy
     @company_branch.destroy
-    redirect_to company_branches_path, notice: 'Your company branch has been deleted'
+    redirect_to company_branches_path, flash: { success: 'Your company branch has been deleted' }
   end
 
   private

@@ -2,7 +2,7 @@
 <div class="col-lg-10">
   <h3 class="text-center my-3">Employees</h3>
   <div class="table-responsive">
-    <table class="table table-hover table-sm">
+    <table class="table table-borderless table-hover table-sm">
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
@@ -17,23 +17,29 @@
 
       <tbody>
         <% @employees.each do |employee| %>
-          <tr>
+          <tr class="border-bottom">
             <td><%= employee.employee_number %></td>
             <td><%= employee.name %></td>
             <td><%= employee.email %></td>
             <td><%= employee.position %></td>
             <td><%= employee.private_number %></td>
-            <td><%= employee.state %></td> 
-            <td class="employee-<%= employee.id %>">
-              <%= link_to "#{ employee.state ? 'Enabled' : 'Disabled' }", 
-              switch_state_employee_company_branch_employee_path(@company_branch, employee), 
-              method: :patch, remote: :true, class: "btn btn-xs btn-outline-#{ employee.state ? 'success' : 'warning' }"  %>
-            </td>           
-            <td><%= link_to 'Show', company_branch_employee_path(@company_branch, employee),
-              class: "btn btn-outline-secondary" %>
-            </td>
-            <td><%= link_to 'Edit', edit_company_branch_employee_path(@company_branch, employee),
-              class: "btn btn-outline-primary" %>
+            <td class="d-flex justify-content-end">
+              <div class="form-check form-switch">
+                <%= link_to switch_state_employee_company_branch_employee_path(@company_branch, employee),
+                  title: "toggle state" , "data-bs-toggle" => :tooltip,
+                  method: :patch,data: { confirm: "Are you sure about #{ employee.state? ? 'disabling' : 'enabling' } employee ?"} do %>
+                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" <%= "checked" if employee.state? %>>
+                  <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                <%end%>
+              </div>
+              <%= link_to company_branch_employee_path(@company_branch, employee),
+                title: "show", "data-bs-toggle" => :tooltip, class: "mx-4" do %>
+                <i class="bi bi-eye"></i>
+              <%end%>
+              <%= link_to  edit_company_branch_employee_path(@company_branch, employee),
+                title: "edit" , "data-bs-toggle" => :tooltip do %>
+                <i class="bi bi-pencil"></i>
+              <%end%>
             </td>
           </tr>
         <% end %>
