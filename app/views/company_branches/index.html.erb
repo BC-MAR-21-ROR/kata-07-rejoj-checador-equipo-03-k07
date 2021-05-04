@@ -2,7 +2,7 @@
 <div class="col-lg-10">
   <h3 class="text-center my-3">Company branches</h3>
   <div class="table-responsive">
-    <table class="table table-hover table-sm">
+    <table class="table table-borderless table-hover table-sm">
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
@@ -14,21 +14,18 @@
 
       <tbody>
         <% @company_branches.each do |branch| %>
-          <tr>
+          <tr class="border-bottom">
             <th scope="row"><%= branch.id %></th>
             <td><%= branch.name %></td>
             <td><%= branch.address %></td>
-            <td>
+            <td class="d-flex justify-content-end">
               <%= link_to company_branch_employees_path(branch), title: "show" , "data-bs-toggle" => :tooltip do %>
                 <i class="bi bi-eye"></i>
               <%end%>
-            </td>
-            <td>
-              <%= link_to edit_company_branch_path(branch), title: "edit" , "data-bs-toggle" => :tooltip do %>
+
+              <%= link_to edit_company_branch_path(branch), title: "edit" , "data-bs-toggle" => :tooltip, class: "mx-4" do %>
                 <i class="bi bi-pencil"></i>
               <%end%>
-            </td>
-            <td>
               <%= link_to company_branch_path(branch), title: "trash" , "data-bs-toggle" => :tooltip,
                 method: :delete, data: { confirm: 'Are you sure?' } do %>
                 <i class="bi bi-trash"></i>

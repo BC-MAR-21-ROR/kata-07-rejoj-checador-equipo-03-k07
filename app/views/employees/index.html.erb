@@ -2,7 +2,7 @@
 <div class="col-lg-10">
   <h3 class="text-center my-3">Employees</h3>
   <div class="table-responsive">
-    <table class="table table-hover table-sm">
+    <table class="table table-borderless table-hover table-sm">
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
@@ -17,13 +17,13 @@
 
       <tbody>
         <% @employees.each do |employee| %>
-          <tr>
+          <tr class="border-bottom">
             <td><%= employee.employee_number %></td>
             <td><%= employee.name %></td>
             <td><%= employee.email %></td>
             <td><%= employee.position %></td>
             <td><%= employee.private_number %></td>
-            <td>
+            <td class="d-flex justify-content-end">
               <div class="form-check form-switch">
                 <%= link_to switch_state_employee_company_branch_employee_path(@company_branch, employee),
                   title: "toggle state" , "data-bs-toggle" => :tooltip,
@@ -32,14 +32,10 @@
                   <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                 <%end%>
               </div>
-            </td>
-            <td>
               <%= link_to company_branch_employee_path(@company_branch, employee),
-                title: "show", "data-bs-toggle" => :tooltip do %>
+                title: "show", "data-bs-toggle" => :tooltip, class: "mx-4" do %>
                 <i class="bi bi-eye"></i>
               <%end%>
-            </td>
-            <td>
               <%= link_to  edit_company_branch_employee_path(@company_branch, employee),
                 title: "edit" , "data-bs-toggle" => :tooltip do %>
                 <i class="bi bi-pencil"></i>
