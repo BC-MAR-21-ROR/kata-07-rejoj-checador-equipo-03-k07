@@ -5,10 +5,10 @@ RSpec.describe Log, type: :model do
     Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
   end
   let(:company_branch) do
-    CompanyBranch.create!(name:'Foo', address:'Foo', admin_id: admin.id )
+    FactoryBot.create(:company_branch, admin: admin)
   end
   let(:employee) do
-    Employee.create!(company_branch_id: company_branch.id)
+    FactoryBot.create(:employee, company_branch_id: company_branch.id)
   end
   describe '#one_check_in_by_day' do
     context 'When a employee does check in' do
