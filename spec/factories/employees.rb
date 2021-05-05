@@ -6,5 +6,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     position { Faker::Job.position }
     state { [true, false].sample }
+
+    company_branch
   end
 end
