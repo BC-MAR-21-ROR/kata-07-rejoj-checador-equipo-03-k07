@@ -29,6 +29,9 @@ class EmployeesController < ApplicationController
     if @employee.update(employee_params)
       redirect_to company_branch_employees_path(@company_branch),
                   flash: { success: 'Your employee has been updated' }
+    else
+      flash[:error] = 'Your employee couldn\'t be updated'
+      render :edit
     end
   end
 
